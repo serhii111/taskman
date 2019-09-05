@@ -1,0 +1,13 @@
+.colorized {
+    color: steelblue;
+    text-align: center;
+}
+
+body {
+    background-color: lightgrey;
+}
+
+p {
+    color: olivedrab;
+    text-align: center;
+}
