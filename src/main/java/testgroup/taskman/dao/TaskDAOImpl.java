@@ -1,5 +1,6 @@
 package testgroup.taskman.dao;
 
+import org.springframework.stereotype.Repository;
 import testgroup.taskman.model.Task;
 
 import java.util.ArrayList;
@@ -8,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
+@Repository
 public class TaskDAOImpl implements TaskDAO {
 
     private static final AtomicInteger AUTO_ID = new AtomicInteger(1);

@@ -1,5 +1,6 @@
 package testgroup.taskman.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -8,14 +9,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import testgroup.taskman.model.Task;
 import testgroup.taskman.service.TaskService;
-import testgroup.taskman.service.TaskServiceImpl;
 
 import java.util.List;
 
 @Controller
 public class TasksController {
 
-    private TaskService taskService = new TaskServiceImpl();
+    private TaskService taskService;
+
+    @Autowired
+    public void setTaskService(TaskService taskService) {
+        this.taskService = taskService;
+    }
 
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView allTasks() {
@@ -59,7 +64,7 @@ public class TasksController {
         return modelAndView;
     }
 
-    @RequestMapping(value="/delete/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     public ModelAndView deleteTask(@PathVariable("id") int id) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("redirect:/");

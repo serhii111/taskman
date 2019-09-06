@@ -44,9 +44,8 @@
     </c:forEach>
 </table>
 
-<h4>Add task</h4>
 <c:url value="/add" var="add"/>
-<a href="${add}">Add new task</a>
+<a href="${add}">Add task</a>
 
 </body>
 </html>

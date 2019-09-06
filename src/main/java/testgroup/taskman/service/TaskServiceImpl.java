@@ -1,15 +1,21 @@
 package testgroup.taskman.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import testgroup.taskman.dao.TaskDAO;
-import testgroup.taskman.dao.TaskDAOImpl;
 import testgroup.taskman.model.Task;
 
 import java.util.List;
 
+@Service
 public class TaskServiceImpl implements TaskService {
 
-    private TaskDAO taskDAO = new TaskDAOImpl();
+    private TaskDAO taskDAO;
 
+    @Autowired
+    public void setTaskDAO(TaskDAO taskDAO) {
+        this.taskDAO = taskDAO;
+    }
 
     public List<Task> allTasks() {
         return taskDAO.allTasks();
