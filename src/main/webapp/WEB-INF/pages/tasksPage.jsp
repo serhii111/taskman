@@ -10,20 +10,24 @@
 <html>
 <head>
     <title>Tasks</title>
-    <%--<link rel="stylesheet" type="text/css" href="<c:url value="/resources/colori.css" />">--%>
-    <link rel="stylesheet" type="text/css" href="/resources/colori.css">
+    <%--<link rel="stylesheet" type="text/css" href="/resources/colori.css">--%>
+    <%--<link rel="stylesheet" type="text/css" href="<c:url value='/resources/colori.css' />"/>--%>
+    <%--<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/colori.css"/>--%>
+    <style>
+        <%@ include file="/resources/colori.css"%>
+    </style>
 </head>
 
 <body>
-<h2 class="colorized">Welcome to the Taskman!</h2>
+<h2 class="header">Welcome to the Taskman!</h2>
 
-<table>
-    <tr>
-        <th>id</th>
-        <th>description</th>
-        <th>priority</th>
-        <th>done</th>
-        <th>action</th>
+<table class="table">
+    <tr class="tableHeader">
+        <th>Id</th>
+        <th>Task Description</th>
+        <th>Priority</th>
+        <th>Done</th>
+        <th>Actions</th>
     </tr>
     <c:forEach var="task" items="${tasks}">
         <tr>
@@ -40,7 +44,7 @@
     </c:forEach>
 </table>
 
-<h2>Add task</h2>
+<h4>Add task</h4>
 <c:url value="/add" var="add"/>
 <a href="${add}">Add new task</a>
 

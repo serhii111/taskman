@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: sm
@@ -11,6 +12,17 @@
     <title>Edit task</title>
 </head>
 <body>
-Edit mode coming soon :)
+<c:url value="/edit" var="var"/>
+<form action="${var}" method="post">
+    <input type="hidden" name="id" value="${task.id}">
+    <label for="description">Description</label>
+    <input type="text" name="description" id="description">
+    <label for="priority">Priority</label>
+    <input type="text" name="priority" id="priority">
+    <label for="done">Done</label>
+    <input type="text" name="done" id="done">
+    <input type="submit" value="Edit task">
+</form>
+
 </body>
 </html>

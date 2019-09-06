@@ -1,13 +1,21 @@
-.colorized {
+.header {
     color: steelblue;
     text-align: center;
 }
 
 body {
     background-color: lightgrey;
+    text-align: center;
 }
 
-p {
-    color: olivedrab;
+.tableHeader {
+    color: darkslategray;
     text-align: center;
+}
+
+.table {
+    color: olivedrab;
+    text-align: left;
+    margin-left:auto;
+    margin-right:auto;
 }
