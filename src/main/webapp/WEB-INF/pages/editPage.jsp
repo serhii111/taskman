@@ -9,19 +9,37 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Edit task</title>
+    <c:if test="${empty task.description}">
+        <title>Add Task</title>
+    </c:if>
+    <c:if test="${!empty task.description}">
+        <title>Edit Task</title>
+    </c:if>
 </head>
 <body>
-<c:url value="/edit" var="var"/>
+<c:if test="${empty task.description}">
+    <c:url value="/add" var="var"/>
+</c:if>
+<c:if test="${!empty task.description}">
+    <c:url value="/edit" var="var"/>
+</c:if>
+
 <form action="${var}" method="post">
-    <input type="hidden" name="id" value="${task.id}">
+    <c:if test="${!empty task.description}">
+        <input type="hidden" name="id" value="${task.id}">
+    </c:if>
     <label for="description">Description</label>
     <input type="text" name="description" id="description">
     <label for="priority">Priority</label>
     <input type="text" name="priority" id="priority">
     <label for="done">Done</label>
     <input type="text" name="done" id="done">
-    <input type="submit" value="Edit task">
+    <c:if test="${empty task.description}">
+        <input type="submit" value="Add new task">
+    </c:if>
+    <c:if test="${!empty task.description}">
+        <input type="submit" value="Edit task">
+    </c:if>
 </form>
 
 </body>

@@ -43,4 +43,28 @@ public class TasksController {
         taskService.edit(task);
         return modelAndView;
     }
+
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    public ModelAndView addPage() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("editPage");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public ModelAndView addTask(@ModelAttribute("task") Task task) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("redirect:/");
+        taskService.add(task);
+        return modelAndView;
+    }
+
+    @RequestMapping(value="/delete/{id}", method = RequestMethod.GET)
+    public ModelAndView deleteTask(@PathVariable("id") int id) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("redirect:/");
+        Task task = taskService.getById(id);
+        taskService.delete(task);
+        return modelAndView;
+    }
 }
