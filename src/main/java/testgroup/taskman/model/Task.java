@@ -1,9 +1,23 @@
 package testgroup.taskman.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "tasks")
 public class Task {
+
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(name = "description")
     private String description;
+
+    @Column(name = "priority")
     private int priority;
+
+    @Column(name = "done")
     private boolean done;
 
     public int getId() {
@@ -38,7 +52,7 @@ public class Task {
         this.done = done;
     }
 
-    public String toString(){
-    return id + ". " + "\"" + description + "\" " + priority + " " + done;
+    public String toString() {
+        return id + ". " + "\"" + description + "\" " + priority + " " + done;
     }
 }
