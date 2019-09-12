@@ -14,7 +14,7 @@ public class TaskServiceImpl implements TaskService {
     private TaskDAO taskDAO;
 
     @Autowired
-    public void setTaskDAO(TaskDAO taskDAO) {
+    public TaskServiceImpl(TaskDAO taskDAO) {
         this.taskDAO = taskDAO;
     }
 

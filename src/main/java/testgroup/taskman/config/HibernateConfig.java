@@ -23,7 +23,7 @@ public class HibernateConfig {
     private Environment environment;
 
     @Autowired
-    public void setEnvironment(Environment environment) {
+    public HibernateConfig(Environment environment) {
         this.environment = environment;
     }
 

@@ -7,17 +7,17 @@ import javax.persistence.*;
 public class Task {
 
     @Id
-    @Column(name = "id")
+    @Column()
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "description")
+    @Column()
     private String description;
 
-    @Column(name = "priority")
+    @Column()
     private int priority;
 
-    @Column(name = "done")
+    @Column()
     private boolean done;
 
     public int getId() {

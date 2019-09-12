@@ -18,23 +18,21 @@ public class TasksController {
     private TaskService taskService;
 
     @Autowired
-    public void setTaskService(TaskService taskService) {
+    TasksController(TaskService taskService) {
         this.taskService = taskService;
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView allTasks() {
+    public ModelAndView allTasks(ModelAndView modelAndView) {
         List<Task> tasks = taskService.allTasks();
-        ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("tasksPage");
         modelAndView.addObject("tasks", tasks);
         return modelAndView;
     }
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
-    public ModelAndView editPage(@PathVariable("id") int id) {
+    public ModelAndView editPage(@PathVariable("id") int id, ModelAndView modelAndView) {
         Task task = taskService.getById(id);
-        ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("editPage");
         modelAndView.addObject("task", task);
         modelAndView.addObject("task", taskService.getById(id));
@@ -42,31 +40,27 @@ public class TasksController {
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
-    public ModelAndView editTask(@ModelAttribute("task") Task task) {
-        ModelAndView modelAndView = new ModelAndView();
+    public ModelAndView editTask(@ModelAttribute("task") Task task, ModelAndView modelAndView) {
         modelAndView.setViewName("redirect:/");
         taskService.edit(task);
         return modelAndView;
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public ModelAndView addPage() {
-        ModelAndView modelAndView = new ModelAndView();
+    public ModelAndView addPage(ModelAndView modelAndView) {
         modelAndView.setViewName("editPage");
         return modelAndView;
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public ModelAndView addTask(@ModelAttribute("task") Task task) {
-        ModelAndView modelAndView = new ModelAndView();
+    public ModelAndView addTask(@ModelAttribute("task") Task task, ModelAndView modelAndView) {
         modelAndView.setViewName("redirect:/");
         taskService.add(task);
         return modelAndView;
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-    public ModelAndView deleteTask(@PathVariable("id") int id) {
-        ModelAndView modelAndView = new ModelAndView();
+    public ModelAndView deleteTask(@PathVariable("id") int id, ModelAndView modelAndView) {
         modelAndView.setViewName("redirect:/");
         Task task = taskService.getById(id);
         taskService.delete(task);
